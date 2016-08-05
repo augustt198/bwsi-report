@@ -15,6 +15,16 @@ layout: default
 
 <div style="margin-top: 30px" class="wrapper" markdown="1">
 
+# Overview
+
+The Beaverworks Summer Institute is a four-week program run by MIT students and faculty. Its focus is to provide an opportunity for high school students in completing an engineering project, in this case, programming a small-scale robotic racecar, and guide the students with lectures and mentorship. The students worked in teams of 5-6, which shuffled every week until the last.
+
+TODO: v quick overview about the car
+
+The program began with a prerequisite of knowledge of Python and ROS (an open-source software framework for robots), and the on-site curriculum was divided into weeks. Each week, the curriculum covered an aspect of the robot's necessary driving autonomy and control with lectures and labs, and the week ended with a challenge related to the material that the teams had to complete. This culminated in a "Grand Prix" on the final day, where every team from the previous 2 weeks (totaling 9 teams) competed with their cars on a large racecourse, with the cars driving autonomously.
+
+
+
 # I. **Week 2:** Perception
 
 ## Blob detection
