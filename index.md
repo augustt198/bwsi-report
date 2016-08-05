@@ -26,7 +26,7 @@ The program began with a prerequisite of knowledge of Python and ROS (an open-so
 
 # I. **Week 1:** Control
 
-The first week's goals were to introduce the students to control systems and interpreting LiDAR data.
+The first week's goal was to introduce the basics of control systems and interpreting LiDAR data. This required several labs and projects, including implementing an "emergency stop" ROS node, and a "wall follower" which would align the car with the wall while driving forward.
 
 # II. **Week 2:** Perception
 
