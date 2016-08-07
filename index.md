@@ -10,6 +10,10 @@ layout: default
         BeaverWorks Summer Institute
     </h2>
 
+    <h3>
+        August Trollbäck &bull; Max Krieger
+    </h3>
+
     <hr/>
 </div>
 
@@ -17,11 +21,46 @@ layout: default
 
 # Overview
 
-The Beaverworks Summer Institute is a four-week program run by MIT students and faculty. Its focus is to provide an opportunity for high school students in completing an engineering project, in this case, programming a small-scale robotic racecar, and to guide the students with lectures and mentorship. The students worked in teams of 5-6, which shuffled every week until the last.
+The Beaverworks Summer Institute is a four-week program run by MIT students and faculty.
+Its focus is to provide an opportunity for high school students in completing an engineering project,
+in this case, programming a small-scale robotic racecar, and to guide the students with lectures
+and mentorship. The students worked in teams of 5-6, which shuffled every week until the last.
 
-TODO: v quick overview about the car
+The program began with a prerequisite of knowledge of Python and ROS (an open-source software
+framework for robots), and the on-site curriculum was divided into weeks. Each week, the curriculum
+covered an aspect of the robot's necessary driving autonomy and control with lectures and labs, and
+the week ended with a challenge related to the material that the teams had to complete. This
+culminated in a "Grand Prix" on the final day, where every team from the previous 2 weeks
+(totaling 9 teams) competed with their cars on a large racecourse, with the cars driving autonomously.
 
-The program began with a prerequisite of knowledge of Python and ROS (an open-source software framework for robots), and the on-site curriculum was divided into weeks. Each week, the curriculum covered an aspect of the robot's necessary driving autonomy and control with lectures and labs, and the week ended with a challenge related to the material that the teams had to complete. This culminated in a "Grand Prix" on the final day, where every team from the previous 2 weeks (totaling 9 teams) competed with their cars on a large racecourse, with the cars driving autonomously.
+## Hardware
+
+The racecar was equipped with a number of sensors:
+
+### **LiDAR**
+
+- A Hokuyo LiDAR provided distance measurements in a 270 degree FOV (field of view) at
+40Hz (40 times per second).
+
+- The video below shows LIDAR data recorded (left) and video simultaneously recorded (right)
+onboard the racecar as it moves through a track.
+
+<div class="centered-text">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/O5Bi8oC5Ess" frameborder="0" allowfullscreen></iframe>
+</div>
+
+### **Camera**
+
+- The onboard [ZED stereo camera](https://www.stereolabs.com/) recorded high quality video from the left and
+right camera, accompanied by a 3D depth map.
+
+### **Inertial Measurement Unit (IMU)**
+
+- The Sparkfun Razor IMU provides measurement in nine degrees of freedom (triple-axis gyroscope, accelerometer,
+and magnetometer)
+
+The computer onboard the racecar was an [NVIDIA Jetson TX1](http://www.nvidia.com/object/jetson-tx1-module.html).
+The Jetson TX1 is a powerful embedded system with a 64 bit CPU and 256 core GPU.
 
 
 # I. **Week 1:** Control
