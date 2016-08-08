@@ -75,6 +75,14 @@ The first week's goal was to introduce the basics of control systems and interpr
 This required several labs and projects, including implementing an "emergency stop" ROS node, and a
 "wall follower" which would align the car with the wall while driving forward.
 
+## The LiDAR & The Emergency Stop Node
+
+The LiDAR sensor provides to the system a polar point cloud of 1081 distances (a 270º FOV centered at the front of the vehicle). From this, one can react to or even map out the immediate environment, allowing for sophisticated navigation and reactive control.
+
+The first task given with the LiDAR was to implement an "emergency stop" node in ROS and Python. The node would observe the LiDAR data, and if it concluded there was an object immediately in front of the vehicle, it would issue a "stop" command to the car to prevent it from colliding with the object.
+
+| To accomplish this, the minimum of a 60º slice of the point cloud immediately in front of the vehicle is taken, and if that minimum is below a threshold, the car's speed is set to 0. `min(points[450:630])`| <img src="assets/img/safety.svg"> |
+
 ## Control Systems
 
 A control system is designed to take a system from one state to another. For instance,
@@ -112,7 +120,9 @@ The system would work as follows:
 | **The PID controller uses this error value, as well as the previous error value, to compute a steering angle for the ackermann mechanism.** | diagram |
 | **The ackermann mechanism actuates a steering angle and turns the car closer to its desired value.** | diagram |
 
-For the sake of time, teams did not apply the integral to
+
+For the sake of time, teams did not apply the integral to their computation. Additionally, many found that calculating the error from a single perpendicular point distance from the LiDAR provided relatively similar results to a trigonometrically computed one. However, this "single-point" method would not always work perfectly, as there are two possible poses the car could be in at a given distance.
+
 
 # II. **Week 2:** Perception
 
