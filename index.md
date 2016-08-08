@@ -75,6 +75,8 @@ The first week's goal was to introduce the basics of control systems and interpr
 This required several labs and projects, including implementing an "emergency stop" ROS node, and a
 "wall follower" which would align the car with the wall while driving forward.
 
+## Control Systems
+
 A control system is designed to take a system from one state to another. For instance,
 if a robot is tasked with following a wall, a control system would be responsible for
 guiding the robot from its current distance wall (initial state) to some desired
@@ -94,6 +96,23 @@ Closed loop control systems make decisions using knowledge of the current output
 <div class="centered-text">
     <img src="assets/img/closed_loop_controller.svg" style="width: 75%">
 </div>
+
+## PID Control
+
+| A common closed loop control system is the PID (proportional-integral-derivative) controller. It makes use of three parameters in order to accomplish a smooth reduction of a given error term. | *TODO: insert nicely formatted PID equation here* |
+
+| By tuning the constants based on the feedback of a PID controller, one can produce a behavior which prevents oscillations (a symptom of "overshooting" a feedback value) and ensures a negligible error value. | <img src="assets/img/pid-animation.gif" /> *animation demonstrating the effect of tuning the PID coefficients* [^pidfig] |
+
+This makes PID control applicable to Week 1's challenge, which was to make the car drive while maintaining a perpendicular pose to a wall. In order to accomplish this, the PID controller would send ackermann steering commands to the car, and observe the LiDAR's measured distance from the wall as closed-loop feedback.
+
+The system would work as follows:
+
+| :--: | :--: |
+| The LiDAR observes points from the left or right wall, and uses simple trigonometric functions to compute an error value. | diagram |
+| The PID controller uses this error value, as well as the previous error value, to compute a steering angle for the ackermann mechanism. | diagram |
+| The ackermann mechanism actuates a steering angle and turns the car closer to its desired value. | diagram |
+
+For the sake of time, teams did not apply the integral to
 
 # II. **Week 2:** Perception
 
@@ -198,3 +217,4 @@ where height represents the magnitude of the potential.
 # References
 
 [^bw_intro_platform]: [Introduction to the RACECAR Platform](https://drive.google.com/file/d/0B6jv7Ea8ZHnNZmZTbUdLWktyLW8/view)
+[^pidfig]: [Wikipedia](https://en.wikipedia.org/wiki/PID_controller#/media/File:PID_Compensation_Animated.gif)
