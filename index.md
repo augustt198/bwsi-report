@@ -35,12 +35,17 @@ culminated in a "Grand Prix" on the final day, where every team from the previou
 
 ## Hardware
 
+<div class="centered-text">
+    <img src="assets/img/racecar_hardware.png" style="width: 75%">
+</div>
+
 The racecar was equipped with a number of sensors:
 
 ### **LiDAR**
 
-- A Hokuyo LiDAR provided distance measurements in a 270 degree FOV (field of view) at
-40Hz (40 times per second).
+- A [Hokuyo UST-10LX](https://www.hokuyo-aut.jp/02sensor/07scanner/ust_10lx_20lx.html)
+LiDAR provided distance measurements in a 270 degree FOV (field of view) at
+40Hz (40 times per second) [^bw_intro_platform].
 
 - The video below shows LIDAR data recorded (left) and video simultaneously recorded (right)
 onboard the racecar as it moves through a track.
@@ -56,16 +61,39 @@ right camera, accompanied by a 3D depth map.
 
 ### **Inertial Measurement Unit (IMU)**
 
-- The Sparkfun Razor IMU provides measurement in nine degrees of freedom (triple-axis gyroscope, accelerometer,
-and magnetometer)
+- The Sparkfun Razor IMU provided measurement in nine degrees of freedom (triple-axis gyroscope, accelerometer,
+and magnetometer) [^bw_intro_platform].
+
+### **Processor**
 
 The computer onboard the racecar was an [NVIDIA Jetson TX1](http://www.nvidia.com/object/jetson-tx1-module.html).
-The Jetson TX1 is a powerful embedded system with a 64 bit CPU and 256 core GPU.
-
+The Jetson TX1 is a powerful embedded system with a 64 bit CPU and 256 core GPU [^bw_intro_platform].
 
 # I. **Week 1:** Control
 
-The first week's goal was to introduce the basics of control systems and interpreting LiDAR data. This required several labs and projects, including implementing an "emergency stop" ROS node, and a "wall follower" which would align the car with the wall while driving forward.
+The first week's goal was to introduce the basics of control systems and interpreting LiDAR data.
+This required several labs and projects, including implementing an "emergency stop" ROS node, and a
+"wall follower" which would align the car with the wall while driving forward.
+
+A control system is designed to take a system from one state to another. For instance,
+if a robot is tasked with following a wall, a control system would be responsible for
+guiding the robot from its current distance wall (initial state) to some desired
+distance to the wall (final state). Control systems can be divided into two categories:
+**open loop** and **closed loop**.
+
+## Open Loop Control Systems
+
+Open loop control systems operate without knowledge of the current output of the system.
+Therefore, they are unable to make corrections so that the the current output reaches
+the desired output.
+
+## Closed Loop Control Systems
+
+Closed loop control systems make decisions using knowledge of the current output of the system.
+
+<div class="centered-text">
+    <img src="assets/img/closed_loop_controller.svg" style="width: 75%">
+</div>
 
 # II. **Week 2:** Perception
 
@@ -164,4 +192,9 @@ where height represents the magnitude of the potential.
 </div>
 
 
+
 # IV. **Week 4:** Preparation for the Grand Prix
+
+# References
+
+[^bw_intro_platform]: [Introduction to the RACECAR Platform](https://drive.google.com/file/d/0B6jv7Ea8ZHnNZmZTbUdLWktyLW8/view)

@@ -39,6 +39,14 @@ $on-laptop:        800px;
     text-align: center;
 }
 
+.footnote::before {
+    content: "[";
+}
+
+.footnote::after {
+    content: "]";
+}
+
 // Use media queries like this:
 // @include media-query($on-palm) {
 //     .wrapper {
