@@ -108,9 +108,9 @@ This makes PID control applicable to Week 1's challenge, which was to make the c
 The system would work as follows:
 
 | :--: | :--: |
-| The LiDAR observes points from the left or right wall, and uses simple trigonometric functions to compute an error value. | diagram |
-| The PID controller uses this error value, as well as the previous error value, to compute a steering angle for the ackermann mechanism. | diagram |
-| The ackermann mechanism actuates a steering angle and turns the car closer to its desired value. | diagram |
+| **The LiDAR observes points from the left or right wall, and uses simple trigonometric functions to compute an error value.** | diagram |
+| **The PID controller uses this error value, as well as the previous error value, to compute a steering angle for the ackermann mechanism.** | diagram |
+| **The ackermann mechanism actuates a steering angle and turns the car closer to its desired value.** | diagram |
 
 For the sake of time, teams did not apply the integral to
 
