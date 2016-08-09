@@ -145,6 +145,17 @@ operations:
 |5|Polygon approximation|placeholder|
 |6|Find centroid|placeholder|
 
+## Visual Servoing
+
+One challenge leading up to the end of the week was to track and follow a colored blob using a technique called "visual servoing", which binds the vehicle's vision directly to its control. By tracking the `x` position of the blob's centroid, and scaling it to match the ackermann steering commands, a vehicle can consistently achieve navigation across an open space to the blob.
+<div class="centered-text">
+    <img src="assets/img/visual_servoing.svg" />
+</div>
+
+## The T-Junction
+
+*
+
 # III. **Week 3:** Localization and Mapping
 
 ## Potential Fields
