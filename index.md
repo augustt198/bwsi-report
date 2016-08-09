@@ -108,7 +108,7 @@ Closed loop control systems make decisions using knowledge of the current output
 ## PID Control
 
 A common closed loop control system is the PID (proportional-integral-derivative) controller.
-It makes use of three parameters, Kp, Kd, and Ki, in order to accomplish a smooth reduction of a given error term.
+It makes use of three constant parameters, Kp, Kd, and Ki, in order to accomplish a smooth reduction of a given error term.
 
 $$u = K_p e + K_i \int_0^t e\,dt + K_d \frac{d}{dt} e$$
 
@@ -148,13 +148,24 @@ operations:
 ## Visual Servoing
 
 One challenge leading up to the end of the week was to track and follow a colored blob using a technique called "visual servoing", which binds the vehicle's vision directly to its control. By tracking the `x` position of the blob's centroid, and scaling it to match the ackermann steering commands, a vehicle can consistently achieve navigation across an open space to the blob.
+
 <div class="centered-text">
     <img src="assets/img/visual_servoing.svg" />
 </div>
 
-## The T-Junction
+Additionally, by computing the total area of the blob, one can assume its proximity. Therefore, when the area exceeds a threshold (in pixel values), the vehicle will stop in order to prevent from colliding into the blob itself.
 
-*
+## Making the Correct Turn
+
+The week's final challenge was to drive to a colored marker until the vehicle was inside of a marked box. The vehicle would then turn to the left or right, depending on the color of the marker, and follow a wall until a finish line [^week2labchallenge].
+
+This resulted in a combination of both the visual servoing developed in the second week, and a wall-based control developed in the previous week. However, because the visual servoing was expected to guide the vehicle to a near-perpendicular pose to the wall, the shift to wall following control would be difficult because of the large error value that would be computed.
+
+To solve this, we created a sharp, intermediary "nudge" phase when the vehicle entered the box, which turned the vehicle left or right based on a fixed amount of time. Once the nudge phase ended, the wall following algorithm was expected to immediately begin functioning, as the vehicle's pose would be near-parallel to the wall.
+
+<div class="centered-text">
+    <img src="assets/img/t_junction.svg" style="width: 75%"/>
+</div>
 
 # III. **Week 3:** Localization and Mapping
 
@@ -244,3 +255,4 @@ where height represents the magnitude of the potential.
 
 [^bw_intro_platform]: [Introduction to the RACECAR Platform](https://drive.google.com/file/d/0B6jv7Ea8ZHnNZmZTbUdLWktyLW8/view)
 [^pidfig]: [Wikipedia](https://en.wikipedia.org/wiki/PID_controller#/media/File:PID_Compensation_Animated.gif)
+[^week2labchallenge]: [Friday Challenge: Make the correct turn](https://docs.google.com/document/d/1tuRuW7xBLRTJqUfpCnNMH-ktWLft_vGdvnr7RT1cgk8/edit)
