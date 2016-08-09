@@ -107,7 +107,10 @@ Closed loop control systems make decisions using knowledge of the current output
 
 ## PID Control
 
-| A common closed loop control system is the PID (proportional-integral-derivative) controller. It makes use of three parameters in order to accomplish a smooth reduction of a given error term. | *TODO: insert nicely formatted PID equation here* |
+A common closed loop control system is the PID (proportional-integral-derivative) controller.
+It makes use of three parameters in order to accomplish a smooth reduction of a given error term.
+
+$$u = K_p e + K_i \int_0^t e\,dt + K_d \frac{d}{dt} e$$
 
 | By tuning the constants based on the feedback of a PID controller, one can produce a behavior which prevents oscillations (a symptom of "overshooting" a feedback value) and ensures a negligible error value. | <img src="assets/img/pid-animation.gif" /> *animation demonstrating the effect of tuning the PID coefficients* [^pidfig] |
 
