@@ -108,7 +108,7 @@ Closed loop control systems make decisions using knowledge of the current output
 ## PID Control
 
 A common closed loop control system is the PID (proportional-integral-derivative) controller.
-It makes use of three constant parameters, Kp, Kd, and Ki, in order to accomplish a smooth reduction of a given error term.
+It makes use of three constant parameters, \\(K_p\\), \\(K_d\\), and \\(K_i\\), in order to accomplish a smooth reduction of a given error term.
 
 $$u = K_p e + K_i \int_0^t e\,dt + K_d \frac{d}{dt} e$$
 
