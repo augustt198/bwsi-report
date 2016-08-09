@@ -108,7 +108,7 @@ Closed loop control systems make decisions using knowledge of the current output
 ## PID Control
 
 A common closed loop control system is the PID (proportional-integral-derivative) controller.
-It makes use of three parameters in order to accomplish a smooth reduction of a given error term.
+It makes use of three parameters, Kp, Kd, and Ki, in order to accomplish a smooth reduction of a given error term.
 
 $$u = K_p e + K_i \int_0^t e\,dt + K_d \frac{d}{dt} e$$
 
@@ -128,6 +128,8 @@ For the sake of time, teams did not apply the integral to their computation. Add
 
 
 # II. **Week 2:** Perception
+
+The second week's goal was to make use of the vehicle's onboard GPU and stereo camera to influence the vehicle's control. This was accomplished by using computer vision algorithms to give the vehicle perceptive detail of any targets in its field of view. Using this perception to track targets, called "blobs", the teams were tasked with following and ultimately making a decision based off of the position of these blobs. For ease of detection, the blobs used were colored pieces of paper.
 
 ## Blob detection
 
