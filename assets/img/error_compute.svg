@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="383px" height="353px" viewBox="0 0 383 353" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="background: #FFFFFF;">
+    <!-- Generator: Sketch 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
+    <title>Artboard</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M295.429688,296.811261 C295.429688,255.650121 319.151835,170.315463 324.390625,101.575956 C329.433247,35.4104273 316,-15 316,-15 L388,-15 L388,353 L316,353 C316,353 295.429688,338.696943 295.429688,296.811261 Z" id="path-1"></path>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="92.5703125" height="368" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <rect id="path-3" x="128" y="150" width="83" height="152" rx="8"></rect>
+        <mask id="mask-4" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="83" height="152" fill="white">
+            <use xlink:href="#path-3"></use>
+        </mask>
+        <rect id="path-5" x="119" y="259" width="10" height="38" rx="5"></rect>
+        <mask id="mask-6" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="10" height="38" fill="white">
+            <use xlink:href="#path-5"></use>
+        </mask>
+        <rect id="path-7" x="119" y="159" width="10" height="38" rx="5"></rect>
+        <mask id="mask-8" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="10" height="38" fill="white">
+            <use xlink:href="#path-7"></use>
+        </mask>
+        <rect id="path-9" x="210" y="159" width="10" height="38" rx="5"></rect>
+        <mask id="mask-10" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="10" height="38" fill="white">
+            <use xlink:href="#path-9"></use>
+        </mask>
+        <rect id="path-11" x="210" y="259" width="10" height="38" rx="5"></rect>
+        <mask id="mask-12" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="10" height="38" fill="white">
+            <use xlink:href="#path-11"></use>
+        </mask>
+        <path d="M169.505038,267.968537 C169.294464,267.969742 169.083747,267.970346 168.872889,267.970346 C109.172313,267.970346 60.7754326,219.573466 60.7754326,159.872889 C60.7754326,100.172313 109.172313,51.7754326 168.872889,51.7754326 C228.573466,51.7754326 276.970346,100.172313 276.970346,159.872889 C276.970346,160.083747 276.969742,160.294464 276.968537,160.505038 L169.505038,160.505038 L169.505038,267.968537 Z" id="path-13"></path>
+        <mask id="mask-14" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="216.194913" height="216.194913" fill="white">
+            <use xlink:href="#path-13"></use>
+        </mask>
+        <circle id="path-15" cx="169" cy="169" r="10"></circle>
+        <mask id="mask-16" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="20" height="20" fill="white">
+            <use xlink:href="#path-15"></use>
+        </mask>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard">
+            <use id="Rectangle" stroke="#979797" mask="url(#mask-2)" stroke-width="2" fill="#E7E7E7" xlink:href="#path-1"></use>
+            <use id="Rectangle-2" stroke="#979797" mask="url(#mask-4)" stroke-width="2" fill="#FFFFFF" xlink:href="#path-3"></use>
+            <use id="Rectangle-4" stroke="#979797" mask="url(#mask-6)" stroke-width="2" fill="#FFFFFF" xlink:href="#path-5"></use>
+            <use id="Rectangle-4" stroke="#979797" mask="url(#mask-8)" stroke-width="2" fill="#5F5F5F" xlink:href="#path-7"></use>
+            <use id="Rectangle-4" stroke="#979797" mask="url(#mask-10)" stroke-width="2" fill="#5F5F5F" xlink:href="#path-9"></use>
+            <use id="Rectangle-4" stroke="#979797" mask="url(#mask-12)" stroke-width="2" fill="#FFFFFF" xlink:href="#path-11"></use>
+            <use id="Combined-Shape" stroke="#3C7EB1" mask="url(#mask-14)" stroke-width="2" fill="#85D4FF" opacity="0.641382929" transform="translate(168.872889, 159.872889) rotate(-315.000000) translate(-168.872889, -159.872889) " xlink:href="#path-13"></use>
+            <use id="Oval" stroke="#979797" mask="url(#mask-16)" stroke-width="2" fill="#FFFFFF" xlink:href="#path-15"></use>
+            <path d="M174.5,170.5 L315.900146,170.5" id="Line" stroke="#191919" stroke-linecap="square"></path>
+            <path id="Line-decoration-1" d="M315.900146,170.5 L305.100146,167.5 L305.100146,173.5 L315.900146,170.5 Z" stroke="#191919" stroke-linecap="square"></path>
+            <path d="M174.5,170.5 L325.5,125.5" id="Line" stroke="#191919" stroke-linecap="square"></path>
+            <path id="Line-decoration-1" d="M325.5,125.5 L314.293032,125.70944 L316.006636,131.459533 L325.5,125.5 Z" stroke="#191919" stroke-linecap="square"></path>
+            <text id="e" font-family="TimesNewRomanPS-BoldItalicMT, Times New Roman" font-size="22" font-style="italic" font-weight="bold" fill="#000000">
+                <tspan x="206" y="201">e</tspan>
+            </text>
+            <path d="M232.5,182 L314.5,182" id="Line" stroke="#4EB918" stroke-width="2" stroke-linecap="square"></path>
+            <path id="Line-decoration-1" d="M314.5,182 L303.7,179 L303.7,185 L314.5,182 Z" stroke="#4EB918" stroke-width="2" stroke-linecap="square"></path>
+            <text id="desired" font-family="TimesNewRomanPS-BoldItalicMT, Times New Roman" font-size="15" font-style="italic" font-weight="bold" fill="#000000">
+                <tspan x="251" y="197">desired</tspan>
+            </text>
+            <path d="M230.5,182 L185.5,182" id="Line" stroke="#E00101" stroke-width="2" stroke-linecap="square"></path>
+        </g>
+    </g>
+</svg>

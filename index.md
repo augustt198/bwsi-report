@@ -81,7 +81,7 @@ The LiDAR sensor provides to the system a polar point cloud of 1081 distances (a
 
 The first task given with the LiDAR was to implement an "emergency stop" node in ROS and Python. The node would observe the LiDAR data, and if it concluded there was an object immediately in front of the vehicle, it would issue a "stop" command to the car to prevent it from colliding with the object.
 
-| To accomplish this, the minimum of a 60º slice of the point cloud immediately in front of the vehicle is taken, and if that minimum is below a threshold, the car's speed is set to 0. `min(points[450:630])`| <img src="assets/img/safety.svg"> |
+| To accomplish this, the minimum of a 60º slice of the point cloud immediately in front of the vehicle is taken, and if that minimum is below a threshold, the car's speed is set to 0. `min(points[450:630]) < 0.5`| <img src="assets/img/safety.svg"> |
 
 ## Control Systems
 
@@ -119,9 +119,9 @@ This makes PID control applicable to Week 1's challenge, which was to make the c
 The system would work as follows:
 
 | :--: | :--: |
-| **The LiDAR observes points from the left or right wall, and uses simple trigonometric functions to compute an error value.** | diagram |
-| **The PID controller uses this error value, as well as the previous error value, to compute a steering angle for the ackermann mechanism.** | diagram |
-| **The ackermann mechanism actuates a steering angle and turns the car closer to its desired value.** | diagram |
+| **The LiDAR observes points from the left or right wall, and uses simple trigonometric functions to compute an error value.** | <img src="assets/img/error_compute.svg"> |
+| **The PID controller uses this error value, as well as the previous error value, to compute a steering angle for the ackermann mechanism.** | <img src="assets/img/steer_angle.svg"> |
+| **The ackermann mechanism actuates a steering angle and turns the car closer to its desired value.** | <img src="assets/img/steer_actuation.svg"> |
 
 
 For the sake of time, teams did not apply the integral to their computation. Additionally, many found that calculating the error from a single perpendicular point distance from the LiDAR provided relatively similar results to a trigonometrically computed one. However, this "single-point" method would not always work perfectly, as there are two possible poses the car could be in at a given distance.
