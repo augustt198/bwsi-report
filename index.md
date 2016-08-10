@@ -175,7 +175,7 @@ Week 3's focus was to introduce core concepts of localization and pathfinding fo
 
 An alternative to SLAM, if the mapping software does indeed prove unreliable, is the use of reactive pathfinding algorithms. These algorithms do not rely on a map or localization, and instead directly control the vehicle based on immediate observations of the surrounding environment. A primitive example of a reactive pathfinding algorithm would be the wall following algorithm discussed in week 2.
 
-However, a slightly more intelligent approach to reactive pathfinding would work in any environment regardless of a wall. For that, there is an algorithm which simulates all obstacles in the LiDAR's point cloud as an electric charges, called Potential Field.
+However, a slightly more intelligent approach to reactive pathfinding would work in any environment regardless of a wall. For that, there is an algorithm which simulates all obstacles in the LiDAR's point cloud as electric charges, called Potential Field.
 
 ## Potential Fields
 
