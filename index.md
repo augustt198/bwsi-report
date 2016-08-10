@@ -169,7 +169,17 @@ To solve this, we created a sharp, intermediary "nudge" phase when the vehicle e
 
 # III. **Week 3:** Localization and Mapping
 
+Week 3's focus was to introduce core concepts of localization and pathfinding for the vehicle. This involved an introduction to SLAM (Simultaneous Localization And Mapping), pathfinding algorithms, and advanced blob detection. Although a complete SLAM implementation would be difficult given the reliability of the vehicle's software & hardware, the week provided plenty of new insight into making an autonomous vehicle which explored and recognized objects.
+
+*TODO: intro to what SLAM is*
+
+An alternative to SLAM, if the mapping software does indeed prove unreliable, is the use of reactive pathfinding algorithms. These algorithms do not rely on a map or localization, and instead directly control the vehicle based on immediate observations of the surrounding environment. A primitive example of a reactive pathfinding algorithm would be the wall following algorithm discussed in week 2.
+
+However, a slightly more intelligent approach to reactive pathfinding would work in any environment regardless of a wall. For that, there is an algorithm which simulates all obstacles in the LiDAR's point cloud as an electric charge, called Potential Field.
+
 ## Potential Fields
+
+The Potential Field algorithm observes every point on the LiDAR's point cloud as if it was a positive charge, which followed some sort of inverse law of repulsion as its distance increased. As the car is compelled to avoid these charges, its own charge would be positive as well, so that both fields repel each other. In order to provide a "boost" and keep the car propelled forward, an additional, larger, positive charge is placed directly behind the car's own internal charge.
 
 ### **Finding Gradients**
 
