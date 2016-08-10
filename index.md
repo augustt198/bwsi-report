@@ -175,11 +175,11 @@ Week 3's focus was to introduce core concepts of localization and pathfinding fo
 
 An alternative to SLAM, if the mapping software does indeed prove unreliable, is the use of reactive pathfinding algorithms. These algorithms do not rely on a map or localization, and instead directly control the vehicle based on immediate observations of the surrounding environment. A primitive example of a reactive pathfinding algorithm would be the wall following algorithm discussed in week 2.
 
-However, a slightly more intelligent approach to reactive pathfinding would work in any environment regardless of a wall. For that, there is an algorithm which simulates all obstacles in the LiDAR's point cloud as an electric charge, called Potential Field.
+However, a slightly more intelligent approach to reactive pathfinding would work in any environment regardless of a wall. For that, there is an algorithm which simulates all obstacles in the LiDAR's point cloud as an electric charges, called Potential Field.
 
 ## Potential Fields
 
-The Potential Field algorithm observes every point on the LiDAR's point cloud as if it was a positive charge, which followed some sort of inverse law of repulsion as its distance increased. As the car is compelled to avoid these charges, its own charge would be positive as well, so that both fields repel each other. In order to provide a "boost" and keep the car propelled forward, an additional, larger, positive charge is placed directly behind the car's own internal charge.
+The Potential Field algorithm observes every point on the LiDAR's point cloud as if it was a positive charge which follows some sort of inverse law of repulsion as its distance increases. As the car is compelled to avoid these charges, its own charge would be positive as well, so that both fields repel each other. In order to provide a "boost" and keep the car propelled forward, an additional, larger, positive charge is placed directly behind the car's own internal charge.
 
 ### **Finding Gradients**
 
