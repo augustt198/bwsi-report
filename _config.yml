@@ -12,7 +12,9 @@ description: > # this means to ignore newlines until "baseurl:"
   Project report of the 2016 Beaverworks summer institute by August Trollbäck and Max Krieger.
 baseurl: "/bwsi-report" # the subpath of your site, e.g. /blog
 url: "http://augustt198.github.io" # the base hostname & protocol for your site
-github_username:  augustt198 & maxkrieger
+github_usernames:
+  - augustt198
+  - maxkrieger
 
 # Build settings
 markdown: kramdown

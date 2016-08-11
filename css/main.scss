@@ -67,3 +67,12 @@ $on-laptop:        800px;
         "layout",
         "syntax-highlighting"
 ;
+
+// Don't underline space between icon and username
+.social-media-list a:hover {
+    text-decoration: none;
+}
+
+.social-media-list a .username:hover {
+    text-decoration: underline;
+}
