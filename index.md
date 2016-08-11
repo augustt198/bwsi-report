@@ -271,18 +271,36 @@ $$s_i = k \Big\| \Big\langle \frac{\partial U_{\text{total}}}{\partial x_c},
 \frac{\partial U_{\text{total}}}{\partial y_c} \Big\rangle \Big\|
 \text{sign}\Big( \frac{\partial U_{\text{total}}}{\partial y_c}\Big)$$
 
-Instead of feeding this speed update directly to the car, we add it to
-a cumulative speed variable that simulates momentum. This speed
-is computed with this update rule:
+Instead of feeding this speed update directly to the car, we apply it to
+a cumulative speed variable that simulates momentum. The purpose of
+simulating momentum is twofold: **(1)** it smooths the car's speed over time
+and **(2)** lets the car build up speed to overcome local minima (valleys
+in the surface of the potential field where the car can get stuck). This speed
+is computed with the following update rule:
 
+
+<table>
+    <tbody>
+        <tr>
+            <td width="30%">
 $$\text{let } s_m = \mu s_m + \alpha s_i$$
+            </td>
+            <td>
+\(\mu\) is responsible for decaying the speed with momentum over time,
+comparable to friction. Values of \(\mu\) should be close to, but less than
+one. Letting \(\mu = 0.95\) worked well for us.
 
-\\(\mu\\) is responsible for decaying the speed with momentum over time,
-comparable to friction. Values of \\(\mu\\) should be close to, but less than
-one. Letting \\(\mu = 0.95\\) worked well for us.
+<br>
+<br>
 
-\\(\alpha\\) determines how much influence the instanteous speed update should have
-in increasing or decreasing the speed with momentum. We picked \\(\alpha = 0.06\\).
+\(\alpha\) determines how much influence the instanteous speed update should have
+in increasing or decreasing the speed with momentum. We picked \(\alpha = 0.06\).
+            </td>
+        </tr>
+    </tbody>
+</table>
+<br>
+
 
 The animated figure below shows a 2D plot of the LiDAR data on the left and a
 3D surface plot of the potential field on the right. This data was taken from a
