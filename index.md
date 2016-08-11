@@ -81,7 +81,7 @@ The LiDAR sensor provides to the system a polar point cloud of 1081 distances (a
 
 The first task given with the LiDAR was to implement an "emergency stop" node in ROS and Python. The node would observe the LiDAR data, and if it concluded there was an object immediately in front of the vehicle, it would issue a "stop" command to the car to prevent it from colliding with the object.
 
-| To accomplish this, the minimum of a 60º slice of the point cloud immediately in front of the vehicle is taken, and if that minimum is below a threshold, the car's speed is set to 0. `min(points[450:630]) < 0.5`| <img src="assets/img/safety.svg"> |
+| To accomplish this, the minimum of a 60º slice of the point cloud immediately in front of the vehicle is taken, and if that minimum is below a threshold, the car's speed is set to zero. | <img src="assets/img/safety.svg"> |
 
 ## Control Systems
 
