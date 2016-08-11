@@ -77,9 +77,15 @@ This required several labs and projects, including implementing an "emergency st
 
 ## The LiDAR & The Emergency Stop Node
 
-The LiDAR sensor provides to the system a polar point cloud of 1081 distances (a 270º FOV centered at the front of the vehicle). From this, one can react to or even map out the immediate environment, allowing for sophisticated navigation and reactive control.
+The LiDAR sensor provides to the system a polar point cloud of 1081 distances
+(a 270º FOV centered at the front of the vehicle). From this, one can react
+to or even map out the immediate environment, allowing for sophisticated
+navigation and reactive control.
 
-The first task given with the LiDAR was to implement an "emergency stop" node in ROS and Python. The node would observe the LiDAR data, and if it concluded there was an object immediately in front of the vehicle, it would issue a "stop" command to the car to prevent it from colliding with the object.
+The first task given with the LiDAR was to implement an "emergency stop"
+node in ROS and Python. The node would observe the LiDAR data, and if it
+concluded there was an object immediately in front of the vehicle, it would
+issue a "stop" command to the car to prevent it from colliding with the object.
 
 | To accomplish this, the minimum of a 60º slice of the point cloud immediately in front of the vehicle is taken, and if that minimum is below a threshold, the car's speed is set to zero. | <img src="assets/img/safety.svg"> |
 
@@ -108,13 +114,17 @@ Closed loop control systems make decisions using knowledge of the current output
 ## PID Control
 
 A common closed loop control system is the PID (proportional-integral-derivative) controller.
-It makes use of three constant parameters, \\(K_p\\), \\(K_d\\), and \\(K_i\\), in order to accomplish a smooth reduction of a given error term.
+It makes use of three constant parameters, \\(K_p\\), \\(K_d\\), and \\(K_i\\), in order to
+accomplish a smooth reduction of a given error term.
 
 $$u = K_p e + K_i \int_0^t e\,dt + K_d \frac{d}{dt} e$$
 
 | By tuning the constants based on the feedback of a PID controller, one can produce a behavior which prevents oscillations (a symptom of "overshooting" a feedback value) and ensures a negligible error value. | <img src="assets/img/pid-animation.gif" /> *animation demonstrating the effect of tuning the PID coefficients* [^pidfig] |
 
-This makes PID control applicable to Week 1's challenge, which was to make the car drive while maintaining a perpendicular pose to a wall. In order to accomplish this, the PID controller would send ackermann steering commands to the car, and observe the LiDAR's measured distance from the wall as closed-loop feedback.
+This makes PID control applicable to Week 1's challenge, which was to make the car
+drive while maintaining a perpendicular pose to a wall. In order to accomplish this,
+the PID controller would send ackermann steering commands to the car, and observe
+the LiDAR's measured distance from the wall as closed-loop feedback.
 
 The system would work as follows:
 
@@ -124,12 +134,21 @@ The system would work as follows:
 | **The ackermann mechanism actuates a steering angle and turns the car closer to its desired value.** | <img src="assets/img/steer_actuation.svg"> |
 
 
-For the sake of time, teams did not apply the integral to their computation. Additionally, many found that calculating the error from a single perpendicular point distance from the LiDAR provided relatively similar results to a trigonometrically computed one. However, this "single-point" method would not always work perfectly, as there are two possible poses the car could be in at a given distance.
+For the sake of time, teams did not apply the integral to their computation. Additionally,
+many found that calculating the error from a single perpendicular point distance from
+the LiDAR provided relatively similar results to a trigonometrically computed one.
+However, this "single-point" method would not always work perfectly, as there are two
+possible poses the car could be in at a given distance.
 
 
 # II. **Week 2:** Perception
 
-The second week's goal was to make use of the vehicle's onboard GPU and stereo camera to influence the vehicle's control. This was accomplished by using computer vision algorithms to give the vehicle perceptive detail of any targets in its field of view. Using this perception to track targets, called "blobs", the teams were tasked with following and ultimately making a decision based off of the position of these blobs. For ease of detection, the blobs used were colored pieces of paper.
+The second week's goal was to make use of the vehicle's onboard GPU and stereo camera to
+influence the vehicle's control. This was accomplished by using computer vision algorithms
+to give the vehicle perceptive detail of any targets in its field of view. Using this perception
+to track targets, called "blobs", the teams were tasked with following and ultimately making
+a decision based off of the position of these blobs. For ease of detection, the blobs used
+were colored pieces of paper.
 
 ## Blob detection
 
@@ -147,21 +166,36 @@ operations:
 
 ## Visual Servoing
 
-One challenge leading up to the end of the week was to track and follow a colored blob using a technique called "visual servoing", which binds the vehicle's vision directly to its control. By tracking the `x` position of the blob's centroid, and scaling it to match the ackermann steering commands, a vehicle can consistently achieve navigation across an open space to the blob.
+One challenge leading up to the end of the week was to track and follow a colored
+blob using a technique called "visual servoing", which binds the vehicle's vision
+directly to its control. By tracking the `x` position of the blob's centroid,
+and scaling it to match the ackermann steering commands, a vehicle can consistently
+achieve navigation across an open space to the blob.
 
 <div class="centered-text">
     <img src="assets/img/visual_servoing.svg" />
 </div>
 
-Additionally, by computing the total area of the blob, one can assume its proximity. Therefore, when the area exceeds a threshold (in pixel values), the vehicle will stop in order to prevent from colliding into the blob itself.
+Additionally, by computing the total area of the blob, one can assume its
+proximity. Therefore, when the area exceeds a threshold (in pixel values),
+the vehicle will stop in order to prevent from colliding into the blob itself.
 
 ## Making the Correct Turn
 
-The week's final challenge was to drive to a colored marker until the vehicle was inside of a marked box. The vehicle would then turn to the left or right, depending on the color of the marker, and follow a wall until a finish line [^week2labchallenge].
+The week's final challenge was to drive to a colored marker until the vehicle was
+inside of a marked box. The vehicle would then turn to the left or right,
+depending on the color of the marker, and follow a wall until a finish line [^week2labchallenge].
 
-This resulted in a combination of both the visual servoing developed in the second week, and a wall-based control developed in the previous week. However, because the visual servoing was expected to guide the vehicle to a near-perpendicular pose to the wall, the shift to wall following control would be difficult because of the large error value that would be computed.
+This resulted in a combination of both the visual servoing developed in the second
+week, and a wall-based control developed in the previous week. However, because
+the visual servoing was expected to guide the vehicle to a near-perpendicular
+pose to the wall, the shift to wall following control would be difficult because
+of the large error value that would be computed.
 
-To solve this, we created a sharp, intermediary "nudge" phase when the vehicle entered the box, which turned the vehicle left or right based on a fixed amount of time. Once the nudge phase ended, the wall following algorithm was expected to immediately begin functioning, as the vehicle's pose would be near-parallel to the wall.
+To solve this, we created a sharp, intermediary "nudge" phase when the vehicle
+entered the box, which turned the vehicle left or right based on a fixed amount
+of time. Once the nudge phase ended, the wall following algorithm was expected to
+immediately begin functioning, as the vehicle's pose would be near-parallel to the wall.
 
 <div class="centered-text">
     <img src="assets/img/t_junction.svg" style="width: 75%"/>
@@ -169,17 +203,33 @@ To solve this, we created a sharp, intermediary "nudge" phase when the vehicle e
 
 # III. **Week 3:** Localization and Mapping
 
-Week 3's focus was to introduce core concepts of localization and pathfinding for the vehicle. This involved an introduction to SLAM (Simultaneous Localization And Mapping), pathfinding algorithms, and advanced blob detection. Although a complete SLAM implementation would be difficult given the reliability of the vehicle's software & hardware, the week provided plenty of new insight into making an autonomous vehicle which explored and recognized objects.
+Week 3's focus was to introduce core concepts of localization and pathfinding for
+the vehicle. This involved an introduction to SLAM (Simultaneous Localization And Mapping),
+pathfinding algorithms, and advanced blob detection. Although a complete SLAM
+implementation would be difficult given the reliability of the vehicle's software & hardware,
+the week provided plenty of new insight into making an autonomous vehicle which explored
+and recognized objects.
 
 *TODO: intro to what SLAM is*
 
-An alternative to SLAM, if the mapping software does indeed prove unreliable, is the use of reactive pathfinding algorithms. These algorithms do not rely on a map or localization, and instead directly control the vehicle based on immediate observations of the surrounding environment. A primitive example of a reactive pathfinding algorithm would be the wall following algorithm discussed in week 2.
+An alternative to SLAM, if the mapping software does indeed prove unreliable, is the
+use of reactive pathfinding algorithms. These algorithms do not rely on a map or
+localization, and instead directly control the vehicle based on immediate observations
+of the surrounding environment. A primitive example of a reactive pathfinding algorithm
+would be the wall following algorithm discussed in week 2.
 
-However, a slightly more intelligent approach to reactive pathfinding would work in any environment regardless of a wall. For that, there is an algorithm which simulates all obstacles in the LiDAR's point cloud as electric charges, called Potential Field.
+However, a slightly more intelligent approach to reactive pathfinding would work
+in any environment regardless of a wall. For that, there is an algorithm which simulates
+all obstacles in the LiDAR's point cloud as electric charges, called Potential Field.
 
 ## Potential Fields
 
-The Potential Field algorithm observes every point on the LiDAR's point cloud as if it was a positive charge which follows some sort of inverse law of repulsion as its distance increases. As the car is compelled to avoid these charges, its own charge would be positive as well, so that both fields repel each other. In order to provide a "boost" and keep the car propelled forward, an additional, larger, positive charge is placed directly behind the car's own internal charge.
+The Potential Field algorithm observes every point on the LiDAR's point cloud as if
+it was a positive charge which follows some sort of inverse law of repulsion as its
+distance increases. As the car is compelled to avoid these charges, its own charge
+would be positive as well, so that both fields repel each other. In order to provide
+a "boost" and keep the car propelled forward, an additional, larger, positive charge
+is placed directly behind the car's own internal charge.
 
 ### **Finding Gradients**
 
