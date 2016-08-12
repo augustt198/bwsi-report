@@ -185,10 +185,10 @@ the visual servoing was expected to guide the vehicle to a near-perpendicular
 pose to the wall, the shift to wall following control would be difficult because
 of the large error value that would be computed.
 
-To solve this, we created a sharp, intermediary "nudge" phase when the vehicle
-entered the box, which turned the vehicle left or right based on a fixed amount
-of time. Once the nudge phase ended, the wall following algorithm was expected to
-immediately begin functioning, as the vehicle's pose would be near-parallel to the wall.
+To solve this, we created an intermediary "nudge" phase when the vehicle
+entered the box, which turned the vehicle sharp left or right for a fixed amount
+of time. Once the nudge phase ended, the wall following algorithm assumed control
+of the vehicle, as the vehicle's pose would be near-parallel to the wall.
 
 <div class="centered-text">
     <img src="assets/img/t_junction.svg" style="width: 75%"/>
