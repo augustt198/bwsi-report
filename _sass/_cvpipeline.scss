@@ -15,14 +15,11 @@
 
 .cvpipeline-list a {
     text-decoration: none;
-}
-
-.cvpipeline-list a.active {
     color: inherit;
 }
 
-.cvpipeline-list a.active li {
-    border: 1.5px solid rgb(68, 153, 75);
+.cvpipeline-list a.active {
+    color: #2a7ae2;
 }
 
 .cv-video-hidden {
@@ -51,4 +48,3 @@
 .cvpipeline-videos div video {
     width: 600px;
 }
-

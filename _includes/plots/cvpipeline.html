@@ -86,10 +86,12 @@ var CURRENT_VID = 1;
 function cvstep(num) {
     document.getElementById("cvtab" + CURRENT_VID).className = "";
     document.getElementById("cvtab" + num).className = "active";
-    //document.getElementById("cv" + CURRENT_VID).className = "cv-video-hidden";
+
     document.getElementById("cv" + num).parentElement.className = "";
     document.getElementById("cv" + num).parentElement.setAttribute("style", "");
-
+    for (var i=1; i<=7; i++) {
+      document.getElementById("cv" + i).className = (i == num ? "" : "cv-video-hidden");
+    }
     CURRENT_VID = num;
 }
 var LOADED_VIDS = {}
