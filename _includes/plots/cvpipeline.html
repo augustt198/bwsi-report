@@ -1,0 +1,119 @@
+<table class="cvpipeline-container">
+<tbody>
+<tr>
+<td width="40%">
+    <ul class="cvpipeline-list">
+        <a href="javascript:cvstep(1)" class="active" id="cvtab1">
+            <li>
+                <b>Step 1:</b> Convert to HSV
+            </li>
+        </a>
+        <a href="javascript:cvstep(2)" id="cvtab2">
+            <li>
+                <b>Step 2:</b> Threshold
+            </li>
+        </a>
+        <a href="javascript:cvstep(3)" id="cvtab3">
+            <li>
+                <b>Step 3:</b> Erode
+            </li>
+        </a>
+        <a href="javascript:cvstep(4)" id="cvtab4">
+            <li>
+                <b>Step 4:</b> Find contours
+            </li>
+        </a>
+        <a href="javascript:cvstep(5)" id="cvtab5">
+            <li>
+                <b>Step 5:</b> Keep largest contour
+            </li>
+        </a>
+        <a href="javascript:cvstep(6)" id="cvtab6">
+            <li>
+                <b>Step 6:</b> Approximate square
+            </li>
+        </a>
+        <a href="javascript:cvstep(7)" id="cvtab7">
+            <li>
+                <b>Step 7:</b> Find center
+            </li>
+        </a>
+    </ul>
+</td>
+<td width="60%" class="cvpipeline-videos">
+    <div>
+    <video autoplay loop id="cv1">
+        <source src="assets/video/stage1.mp4" type="video/mp4">
+    </video>
+    </div>
+    <div class="cv-video-hidden">
+    <video autoplay loop id="cv2">
+        <source src="assets/video/stage2.mp4" type="video/mp4">
+    </video>
+    </div>
+    <div class="cv-video-hidden">
+    <video autoplay loop id="cv3">
+        <source src="assets/video/stage3.mp4" type="video/mp4">
+    </video>
+    </div>
+    <div class="cv-video-hidden">
+    <video autoplay loop id="cv4">
+        <source src="assets/video/stage4.mp4" type="video/mp4">
+    </video>
+    </div>
+    <div class="cv-video-hidden">
+    <video autoplay loop id="cv5">
+        <source src="assets/video/stage5.mp4" type="video/mp4">
+    </video>
+    </div>
+    <div class="cv-video-hidden">
+    <video autoplay loop id="cv6">
+        <source src="assets/video/stage6.mp4" type="video/mp4">
+    </video>
+    </div>
+    <div class="cv-video-hidden">
+    <video autoplay loop id="cv7">
+        <source src="assets/video/stage7.mp4" type="video/mp4">
+    </video>
+    </div>
+</td>
+</tr>
+</tbody>
+</table>
+
+<script>
+var CURRENT_VID = 1;
+function cvstep(num) {
+    document.getElementById("cvtab" + CURRENT_VID).className = "";
+    document.getElementById("cvtab" + num).className = "active";
+    //document.getElementById("cv" + CURRENT_VID).className = "cv-video-hidden";
+    document.getElementById("cv" + num).parentElement.className = "";
+    document.getElementById("cv" + num).parentElement.setAttribute("style", "");
+
+    CURRENT_VID = num;
+}
+var LOADED_VIDS = {}
+function allVidsLoaded() {
+    for (var i = 1; i <= 7; i++) {
+        if (!LOADED_VIDS[i])
+            return false;
+    }
+    return true;
+}
+function restartAllVids() {
+    for (var i = 1; i <= 7; i++) {
+        var ele = document.getElementById("cv" + i);
+        ele.currentTime = 0;
+    }
+}
+for (var i = 1; i <= 7; i++) {
+    (function(idnum){
+        var ele = document.getElementById("cv" + idnum);
+        ele.addEventListener('loadeddata', function() {
+            LOADED_VIDS[idnum] = true;
+            if (allVidsLoaded())
+                restartAllVids();
+        }, false);
+    })(i);
+}
+</script>

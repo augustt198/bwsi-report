@@ -155,14 +155,7 @@ were colored pieces of paper.
 To perform blob detection, we used a pipeline of computer vision
 operations:
 
-|#| Operation | Output Image |
-|-|:--|:--:|
-|1|Convert image to HSV colorspace|placeholder|
-|2|Color thresholding|placeholder|
-|3|Blurring and erosion|placeholder|
-|4|Finding contours|placeholder|
-|5|Polygon approximation|placeholder|
-|6|Find centroid|placeholder|
+{% include plots/cvpipeline.html %}
 
 ## Visual Servoing
 

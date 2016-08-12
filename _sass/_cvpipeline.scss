@@ -1,0 +1,54 @@
+.cvpipeline-container {
+    width: 100%;
+}
+
+.cvpipeline-list {
+    list-style-type: none;
+}
+
+.cvpipeline-list li {
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #eee;
+    margin-bottom: 5px;
+}
+
+.cvpipeline-list a {
+    text-decoration: none;
+}
+
+.cvpipeline-list a.active {
+    color: inherit;
+}
+
+.cvpipeline-list a.active li {
+    border: 1.5px solid rgb(68, 153, 75);
+}
+
+.cv-video-hidden {
+    width: 0 !important;
+}
+
+.cv-video-hidden video {
+    display: none;
+}
+
+.cvpipeline-videos {
+    position: relative;
+}
+
+.cvpipeline-videos div {
+    overflow: hidden;
+    width: 100%;
+    transition: width 0.4s;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 400px;
+    border-right: 2px solid red;
+}
+
+.cvpipeline-videos div video {
+    width: 600px;
+}
+
