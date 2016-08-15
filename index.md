@@ -254,11 +254,11 @@ $$ \frac{\partial U_{\text{total}}}{\partial x_c} =
 We decided to make the car's steering angle proportional to the potential gradient
 with respect to x:
 
-$$\text{steer} = k \frac{\partial U_{\text{total}}}{\partial x_c}$$
+$$\text{steer} = k_\text{steer} \frac{\partial U_{\text{total}}}{\partial x_c}$$
 
 For speed, we first created an instantaneous speed update, computed as:
 
-$$s_i = k \Big\| \Big\langle \frac{\partial U_{\text{total}}}{\partial x_c},
+$$s_i = k_\text{speed} \Big\| \Big\langle \frac{\partial U_{\text{total}}}{\partial x_c},
 \frac{\partial U_{\text{total}}}{\partial y_c} \Big\rangle \Big\|
 \text{sign}\Big( \frac{\partial U_{\text{total}}}{\partial y_c}\Big)$$
 
@@ -291,6 +291,13 @@ in increasing or decreasing the speed with momentum. We picked \(\alpha = 0.06\)
     </tbody>
 </table>
 <br>
+
+Tuning \\(k_\text{steer}\\), \\(k_\text{speed}\\), \\(\mu\\), \\(\alpha\\) depended
+on the context in which the racecar was moving. In the context of exploring a space
+while avoiding obstacles, it was appropriate to make the car be nimble --- high
+steering reaction and low potential pushing it forward. In the context of racing
+through a track, however, the car was tuned to be more aggressive --- less steering
+reaction and more potential propelling it forward.
 
 
 The interactive figure below shows a 2D plot of the LiDAR data on the left and a
