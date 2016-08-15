@@ -203,8 +203,6 @@ implementation would be difficult given the reliability of the vehicle's softwar
 the week provided plenty of new insight into making an autonomous vehicle which explored
 and recognized objects.
 
-*TODO: intro to what SLAM is*
-
 An alternative to SLAM, if the mapping software does indeed prove unreliable, is the
 use of reactive pathfinding algorithms. These algorithms do not rely on a map or
 localization, and instead directly control the vehicle based on immediate observations
@@ -321,6 +319,21 @@ where height represents the magnitude of the potential.
 
 
 # IV. **Week 4:** Preparation for the Grand Prix
+
+For the final week, every team was tasked with adapting their existing algorithms and procedures to a large racecourse, where every car would complete on the final day. The course contained multiple turns, and a forked path with shortcut, which would allow cars through when a colored paper signal was green.
+
+<div class="centered-text">
+    <img src="assets/img/course.png" style="width: 75%">
+</div>
+*illustration of the final racecourse*
+
+For many teams, the course itself would not be the major issue. A well-optimized potential field algorithm would respond to the contours of the course's walls smoothly without collision. Thusly, most teams succeeded with an adapted potential field algorithm for general purpose navigation. For others, an adapted wall following algorithm could perform equally well on the time trials, as long as it could respond to turns without losing sight of the wall or overshooting.
+
+That being said, our group's own potential field algorithm would still oscillate periodically if a turn was particularly large, as it would constantly overshoot in attempts to right itself. To solve this, we used a paradigm from the PID algorithm: the derivative. By adding some coefficient times the previous computed `y` vector, oscillations would be miniscule if not having disappeared completely. This allows for much higher quality course following. However, one flaw to note is that encountering sharp, near 90º turn would simply result in a collision with the wall. This flaw would materialize later in the grand prix.
+
+# Reflection
+
+  Working on this project meant facing essentially any challenge which came across our, or our racecar's path. Working with an unfamiliar, unpredictable system provided hurdles which only tightened deadlines. On top of that, accomplishing the feat of developing a working robot while working in a team of 5 meant there was no collective conscious. Tasks had to be split, issues raised loudly, and focus had to be able to spin on a dime.
 
 # References
 
