@@ -18,6 +18,9 @@ var FRAME_COUNT = PLOTTING_DATA.surface.length;
 // useful for coloring height
 var zMin, zMax, zRange, zMid;
 
+var canvasEle = document.getElementById('canvas-lidar');
+var canvasCtx = canvasEle.getContext('2d');
+
 init();
 animate();
 
@@ -25,7 +28,7 @@ function init() {
     scene = new THREE.Scene();
 
     // Setup camera
-    var SCREEN_WIDTH = 500.0, SCREEN_HEIGHT = 500.0;
+    var SCREEN_WIDTH = 400.0, SCREEN_HEIGHT = 400.0;
 
     var VIEW_ANGLE = 45;
     var ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT;
@@ -256,11 +259,61 @@ function update() {
     // UPDATE SPHERE INDICATOR
     sphereIndicator.position.setZ(centerSurfaceZ + 0.25);
 
+    // draw lidar
+    drawCanvasLidar();
+
     // END
     previousFrame = currentFrame;
 }
 
 function render() {
     renderer.render(scene, camera);
+}
+
+// scaling factor of lidar points -> canvas points
+var LIDAR_PT_SCALE = 100.0;
+
+var canvasShouldUpdate = true;
+
+function drawCanvasLidar() {
+    if (!canvasShouldUpdate) {
+        canvasShouldUpdate = !canvasShouldUpdate;
+        return;
+    }
+    console.log("yes");
+
+    canvasCtx.clearRect(0, 0, 500, 500);
+    var oldFrame = Math.floor(playbackTime);
+    var nextFrame = Math.floor(playbackTime + 1) % FRAME_COUNT;
+    var lerpTime = playbackTime - oldFrame;
+
+    for (var i = 0; i < PLOTTING_DATA.lidar[0][0].length; i++) {
+        var oldLidarX = PLOTTING_DATA.lidar[oldFrame][0][i];
+        var nextLidarX = PLOTTING_DATA.lidar[nextFrame][0][i];
+        if (Math.abs(nextLidarX - oldLidarX) > 2.6)
+            var lidarX = oldLidarX;
+        else
+            var lidarX = lerp(oldLidarX, nextLidarX, lerpTime);
+
+        var oldLidarY = PLOTTING_DATA.lidar[oldFrame][1][i];
+        var nextLidarY = PLOTTING_DATA.lidar[nextFrame][1][i];
+        if (Math.abs(nextLidarX - oldLidarX) > 2.6)
+            var lidarY = oldLidarY;
+        else
+            var lidarY = lerp(oldLidarY, nextLidarY, lerpTime);
+
+        var ptX = canvasEle.width/2.0 - lidarX*LIDAR_PT_SCALE;
+        var ptY = canvasEle.height/2.0 - lidarY*LIDAR_PT_SCALE;
+
+        canvasCtx.fillRect(Math.round(ptX), Math.round(ptY), 3, 3);
+    }
+
+    canvasCtx.beginPath();
+    canvasCtx.fillStyle = '#6d5af8';
+    canvasCtx.arc(canvasEle.width/2, canvasEle.height/2, 5, 0, Math.PI*2, true);
+    canvasCtx.fill();
+    canvasCtx.fillStyle = 'black';
+
+    canvasShouldUpdate = !canvasShouldUpdate;
 }
 

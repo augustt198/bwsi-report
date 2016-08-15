@@ -293,18 +293,9 @@ in increasing or decreasing the speed with momentum. We picked \(\alpha = 0.06\)
 <br>
 
 
-The animated figure below shows a 2D plot of the LiDAR data on the left and a
+The interactive figure below shows a 2D plot of the LiDAR data on the left and a
 3D surface plot of the potential field on the right. This data was taken from a
-run through the obstacle course.
-
-<video controls>
-    <source src="http://bwsi-report-media.s3.amazonaws.com/3d_pf_viz.mp4" type="video/mp4">
-    Your browser doesn't support HTML5 video.
-</video>
-
-**Figure 1:** _(Left)_ LiDAR datapoints mapped to rectangular coordinates.
-The car is at \\((0, 0)\\). _(Right)_ a surface plot of the potential field
-where height represents the magnitude of the potential.
+run through an obstacle course.
 
 <div class="centered-text">
     {% include plots/interactive_potential.html %}
