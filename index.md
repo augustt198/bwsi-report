@@ -306,13 +306,9 @@ run through the obstacle course.
 The car is at \\((0, 0)\\). _(Right)_ a surface plot of the potential field
 where height represents the magnitude of the potential.
 
-{% include plots/lidar2D.html %}
-{% include plots/potfield3D.html %}
-
-<script>
-
-
-</script>
+<div class="centered-text">
+    {% include plots/interactive_potential.html %}
+</div>
 
 </div>
 
@@ -340,3 +336,6 @@ That being said, our group's own potential field algorithm would still oscillate
 [^bw_intro_platform]: [Introduction to the RACECAR Platform](https://drive.google.com/file/d/0B6jv7Ea8ZHnNZmZTbUdLWktyLW8/view)
 [^pidfig]: [Wikimedia Commons](https://en.wikipedia.org/wiki/PID_controller#/media/File:PID_Compensation_Animated.gif)
 [^week2labchallenge]: [Friday Challenge: Make the correct turn](https://docs.google.com/document/d/1tuRuW7xBLRTJqUfpCnNMH-ktWLft_vGdvnr7RT1cgk8/edit)
+
+
+{% include plots/interactive_potential_scripts.html %}
