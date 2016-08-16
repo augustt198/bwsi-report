@@ -280,7 +280,6 @@ function drawCanvasLidar() {
         canvasShouldUpdate = !canvasShouldUpdate;
         return;
     }
-    console.log("yes");
 
     canvasCtx.clearRect(0, 0, 500, 500);
     var oldFrame = Math.floor(playbackTime);
