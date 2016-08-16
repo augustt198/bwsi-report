@@ -314,16 +314,38 @@ run through an obstacle course.
 
 # IV. **Week 4:** Preparation for the Grand Prix
 
-For the final week, every team was tasked with adapting their existing algorithms and procedures to a large racecourse, where every car would complete on the final day. The course contained multiple turns, and a forked path with shortcut, which would allow cars through when a colored paper signal was green.
+For the final week, every team was tasked with adapting their existing algorithms and procedures to a large racecourse, where every car would complete on the final day. The course contained multiple turns, and a forked path with shortcut, which would allow cars through when a colored paper signal was green. If the paper signal was red, the cars had to turn to the right, as the shortcut would be closed.
 
 <div class="centered-text">
     <img src="assets/img/course.png" style="width: 75%">
 </div>
-*illustration of the final racecourse*
+**Above:** illustration of the final racecourse
+
+## Navigation
 
 For many teams, the course itself would not be the major issue. A well-optimized potential field algorithm would respond to the contours of the course's walls smoothly without collision. Thusly, most teams succeeded with an adapted potential field algorithm for general purpose navigation. For others, an adapted wall following algorithm could perform equally well on the time trials, as long as it could respond to turns without losing sight of the wall or overshooting.
 
 That being said, our group's own potential field algorithm would still oscillate periodically if a turn was particularly large, as it would constantly overshoot in attempts to right itself. To solve this, we used a paradigm from the PID algorithm: the derivative. By adding some coefficient times the previous computed `y` vector, oscillations would be miniscule if not having disappeared completely. This allows for much higher quality course following. However, one flaw to note is that encountering sharp, near 90º turn would simply result in a collision with the wall. This flaw would materialize later in the grand prix.
+
+## The Fork
+
+The forked path in the course would prove to be challenging to work with. Not only were lighting conditions in the building subpar for accurate detection of the signal, but incorrectly deciding when to turn to the right, if the signal was indeed red, would result in a wall collision.
+
+<div class="centered-text">
+    <img src="assets/img/fork.png" style="width: 75%">
+</div>
+
+**Above:** the forked path of the course with a red signal above the shortcut corridor. The vehicle had to decide whether to turn left or right.
+
+Many teams took multiple steps to alleviate these challenges. As the detection of the red blob (signal) would not be constant, a decision to turn would be reactive and informed. Some teams used a rolling average of the binary presence of the red blob, and if the average was high enough, a turn would take place.
+
+For the turn itself, the area of the blob was enough to approximate the proximity of the right corridor. Whether the area threshold was correct for an optimal turn, however, was a separate issue. Once the threshold was large enough, and the rolling average confirmed that it was a persistent red blob, a large, virtual positive charge was inserted to the left of the car in order to force it to turn to the right. As soon as the red blob disappeared from the car's field of view, the charge would be removed so the car could continue.
+
+Likewise, if the blob was green, to prevent the car from veering to the right after seeing an open corridor, a virtual positive charge would be placed to the right to keep the car on a relatively straight course.
+
+**Max**:
+
+> Unfortunately due to the lack of time in testing our vision, the car was unable to decide to turn to the right during the grand prix. This was due to a mistuned threshold of the size of the red blob, causing the car to steer either prematurely or too late to the right. However, when the signal was green, the car was able to respond correctly and drive straight through the shortcut.
 
 # Reflection
 
