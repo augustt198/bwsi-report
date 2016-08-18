@@ -351,6 +351,12 @@ Likewise, if the blob was green, to prevent the car from veering to the right af
 
   Working on this project meant facing essentially any challenge which came across our, or our racecar's path. Working with an unfamiliar, unpredictable system provided hurdles which only tightened deadlines. On top of that, accomplishing the feat of developing a working robot while working in a team of 5 meant there was no collective conscious. Tasks had to be split, issues raised loudly, and focus had to be able to spin on a dime.
 
+  The obvious outcome of this situation is that much will be learned about teamwork. Tackling a complex engineering challenge as a team is challenging, but exactly how real-world engineering works. The added dimension of competition meant better ideas came out of more people, and most were still shared between teams.
+
+# The Future
+
+  The engineering of autonomous vehicles are obviously burgeoning, and will most likely disrupt the transportation market within the next decade. It's a fantastic opportunity to experience the development of such machines firsthand, and to learn from so many speakers in the field of robotics.
+
 # References
 
 [^bw_intro_platform]: [Introduction to the RACECAR Platform](https://drive.google.com/file/d/0B6jv7Ea8ZHnNZmZTbUdLWktyLW8/view)
