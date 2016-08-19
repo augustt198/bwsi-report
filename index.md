@@ -319,7 +319,7 @@ For the final week, every team was tasked with adapting their existing algorithm
 <div class="centered-text">
     <img src="assets/img/course.png" style="width: 75%">
 </div>
-**Above:** illustration of the final racecourse
+**Above:** illustration of the final racecourse [^finalcourse]
 
 ## Navigation
 
@@ -362,6 +362,6 @@ Likewise, if the blob was green, to prevent the car from veering to the right af
 [^bw_intro_platform]: [Introduction to the RACECAR Platform](https://drive.google.com/file/d/0B6jv7Ea8ZHnNZmZTbUdLWktyLW8/view)
 [^pidfig]: [Wikimedia Commons](https://en.wikipedia.org/wiki/PID_controller#/media/File:PID_Compensation_Animated.gif)
 [^week2labchallenge]: [Friday Challenge: Make the correct turn](https://docs.google.com/document/d/1tuRuW7xBLRTJqUfpCnNMH-ktWLft_vGdvnr7RT1cgk8/edit)
-
+[^finalcourse]: [Last Week Schedule](https://docs.google.com/document/d/1WoPfoQuD2ArihMnsGA0yWzlRxa1iL3IyfJUgsMoGKYA/edit)
 
 {% include plots/interactive_potential_scripts.html %}
