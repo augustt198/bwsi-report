@@ -11,7 +11,7 @@ layout: default
     </h2>
 
     <h3>
-        August Trollbäck &bull; Max Krieger
+        August Trollbäck (team 63) &bull; Max Krieger (team 66)
     </h3>
 
     <hr/>
@@ -38,8 +38,6 @@ culminated in a "Grand Prix" on the final day, where every team from the previou
 <div class="centered-text">
     <img src="assets/img/racecar_hardware.png" style="width: 75%">
 </div>
-
-The racecar was equipped with a number of sensors:
 
 ### **LIDAR**
 
@@ -99,7 +97,7 @@ safety input topic).
 ## Control Systems
 
 In the first week, Kyle Edelberg from JPL taught the group how to autonomously
-control robots using a _control system_.
+control robots using _control systems_.
 
 A control system is designed to take a system from one state to another. For instance,
 if a robot is tasked with following a wall, a control system would be responsible for
@@ -374,16 +372,17 @@ run through an obstacle course.
 
 For the final week, every team was tasked with adapting their existing algorithms and procedures to a large racecourse, where every car would complete on the final day. The course contained multiple turns, and a forked path with shortcut, which would allow cars through when a colored paper signal was green. If the paper signal was red, the cars had to turn to the right, as the shortcut would be closed.
 
-<div class="centered-text">
-    <img src="assets/img/course.png" style="width: 75%">
+<div class="centered-text" markdown="1">
+<img src="assets/img/course.png" style="width: 75%">
+<br>
+<b>Above:</b> illustration of the final racecourse [^finalcourse]
 </div>
-**Above:** illustration of the final racecourse [^finalcourse]
 
 ## Navigation
 
 For many teams, the course itself would not be the major issue. A well-optimized potential field algorithm would respond to the contours of the course's walls smoothly without collision. Thusly, most teams succeeded with an adapted potential field algorithm for general purpose navigation. For others, an adapted wall following algorithm could perform equally well on the time trials, as long as it could respond to turns without losing sight of the wall or overshooting.
 
-That being said, our group's own potential field algorithm would still oscillate periodically if a turn was particularly large, as it would constantly overshoot in attempts to right itself. To solve this, we used a paradigm from the PID algorithm: the derivative. By adding some coefficient times the previous computed \\(y\\) vector, oscillations would be miniscule if not having disappeared completely. This allows for much higher quality course following. However, one flaw to note is that encountering sharp, near 90º turn would simply result in a collision with the wall. This flaw would materialize later in the grand prix.
+That being said, our group's (team 66) own potential field algorithm would still oscillate periodically if a turn was particularly large, as it would constantly overshoot in attempts to right itself. To solve this, we used a paradigm from the PID algorithm: the derivative. By adding some coefficient times the previous computed \\(y\\) vector, oscillations would be miniscule if not having disappeared completely. This allows for much higher quality course following. However, one flaw to note is that encountering sharp, near 90º turn would simply result in a collision with the wall. This flaw would materialize later in the grand prix.
 
 ## The Fork
 
@@ -391,9 +390,11 @@ The forked path in the course would prove to be challenging to work with. Not on
 
 <div class="centered-text">
     <img src="assets/img/fork.png" style="width: 75%">
+    <br>
+    <b>Above:</b> the forked path of the course with a red signal above the shortcut corridor.
+    The vehicle had to decide whether to turn left or right.
 </div>
 
-**Above:** the forked path of the course with a red signal above the shortcut corridor. The vehicle had to decide whether to turn left or right.
 
 Many teams took multiple steps to alleviate these challenges. As the detection of the red blob (signal) would not be constant, a decision to turn would be reactive and informed. Some teams used a rolling average of the binary presence of the red blob, and if the average was high enough, a turn would take place.
 
@@ -404,6 +405,12 @@ Likewise, if the blob was green, to prevent the car from veering to the right af
 **Max**:
 
 > Unfortunately due to the lack of time in testing our vision, the car was unable to decide to turn to the right during the grand prix. This was due to a mistuned threshold of the size of the red blob, causing the car to steer either prematurely or too late to the right. However, when the signal was green, the car was able to respond correctly and drive straight through the shortcut.
+
+**August**:
+
+> At the end of the day before the grand prix, we were unable to consistently detect the red/green blobs. However, when it was our turn
+> to race on the morning of the grand prix, we were pleasantly surprised to find that the detection worked in all three time trials.
+> Presumably our color ranges were calibrated in the morning the day before and became ineffective in the afternoon light.
 
 # Reflection
 
