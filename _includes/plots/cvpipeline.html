@@ -30,7 +30,7 @@
         </a>
         <a href="javascript:cvstep(6)" id="cvtab6">
             <li>
-                <b>Step 6:</b> Approximate square
+                <b>Step 6:</b> Approximate polygon
             </li>
         </a>
         <a href="javascript:cvstep(7)" id="cvtab7">
@@ -116,7 +116,7 @@ for (var i = 1; i <= 7; i++) {
         ele.addEventListener('loadeddata', function() {
             LOADED_VIDS[idnum] = true;
             if (allVidsLoaded())
-                restartAllVids();
+                setTimeout(restartAllVids, 1500);
         }, false);
     })(i);
 }
