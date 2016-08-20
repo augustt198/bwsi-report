@@ -84,16 +84,42 @@
 <script>
 var CURRENT_VID = 1;
 function cvstep(num) {
+    if (num == CURRENT_VID) return;
+
     document.getElementById("cvtab" + CURRENT_VID).className = "";
     document.getElementById("cvtab" + num).className = "active";
 
-    document.getElementById("cv" + num).parentElement.setAttribute("style", "");
-    document.getElementById("cv" + num).parentElement.className = "";
-    window.setTimeout(function() {
-      for (var i=1; i<=7; i++) {
-        document.getElementById("cv" + i).className = (i == num ? "" : "cv-video-hidden");
-      }
-    }, (CURRENT_VID > num) ? 0 : 400);
+    var prevVid = document.getElementById("cv"+CURRENT_VID);
+    var nextVid = document.getElementById("cv"+num);
+
+    // next video in front
+    if (num > CURRENT_VID) {
+        nextVid.parentElement.setAttribute(
+            "style", "width:100%; transition: width 0.4s"
+        );
+        nextVid.parentElement.className = "";
+
+        setTimeout((function(v) {
+            return function() {
+                v.parentElement.removeAttribute("style");
+                v.parentElement.className = "cv-video-hidden";
+            };
+        })(prevVid), 400);
+    } else { // next video in back
+        nextVid.parentElement.setAttribute("style", "width:100%");
+        nextVid.parentElement.className = "";
+
+        prevVid.parentElement.setAttribute(
+            "style", "width:0%; transition: width 0.4s"
+        );
+        setTimeout((function(v) {
+            return function() {
+                v.parentElement.removeAttribute("style");
+                v.parentElement.className = "cv-video-hidden";
+            }
+        })(prevVid), 400);
+    }
+
     CURRENT_VID = num;
 }
 var LOADED_VIDS = {}
