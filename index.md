@@ -420,7 +420,7 @@ Likewise, if the blob was green, to prevent the car from veering to the right af
 
 # The Future
 
-  The engineering of autonomous vehicles are obviously burgeoning, and will most likely disrupt the transportation market within the next decade. It's a fantastic opportunity to experience the development of such machines firsthand, and to learn from so many speakers in the field of robotics.
+  The engineering of autonomous vehicles is obviously burgeoning, and will most likely disrupt the transportation market within the next decade. It's a fantastic opportunity to experience the development of such machines firsthand, and to learn from so many speakers in the field of robotics.
 
 # References
 
