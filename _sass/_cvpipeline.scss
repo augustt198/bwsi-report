@@ -18,8 +18,16 @@
     color: inherit;
 }
 
-.cvpipeline-list a.active {
+.cvpipeline-list a:hover {
     color: #2a7ae2;
+}
+
+.cvpipeline-list a.active {
+    color: white;
+}
+
+.cvpipeline-list a.active li {
+    background-color: #2a7ae2;
 }
 
 .cv-video-hidden {
